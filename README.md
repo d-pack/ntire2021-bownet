@@ -34,4 +34,5 @@ Our results:
 | PSNR | SSIM | LPIPS | TIME |  
 |---|---|---|---|  
 | 27.054675 | 0.852373 | 0.343938 | 0.214931 |
+
 Result data can be found [here](https://drive.google.com/file/d/1iMRj7iWsUjSosMJp9qjMFv1Ay5SkoFlA)
