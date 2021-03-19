@@ -1,0 +1,68 @@
+#### general settings
+name: BOWGAN_pretrain
+use_tb_logger: true
+model: sr
+distortion: sr
+scale: 4
+gpu_ids: [0]
+
+#### datasets
+datasets:
+  train:
+    name: DF2K_train 
+    mode: LQGT    
+    dataroot_GT: /mnt/ssd2/Datasets/NTIRE_2021/Track1_SR/train/train_sharp
+    dataroot_LQ: /mnt/ssd2/Datasets/NTIRE_2021/Track1_SR/train/train_blur_bicubic
+
+    use_shuffle: true
+    n_workers: 6  # per GPU
+    batch_size: 16
+    GT_size: 128
+    use_flip: true
+    use_rot: true
+    color: RGB
+  val:
+    name: DIV2K_val
+    mode: LQGT
+    dataroot_GT: /mnt/ssd2/Datasets/NTIRE_2021/Track1_SR/val/val_sharp
+    dataroot_LQ: /mnt/ssd2/Datasets/NTIRE_2021/Track1_SR/val/val_blur_bicubic
+    skip: 10
+    
+#### network structures
+network_G:
+  which_model_G: BOWGAN
+  in_nc: 3
+  out_nc: 3
+  nf: 64
+  nb: 23
+
+#### path
+path:
+  pretrain_model_G: #../experiments/pretrained_models/RRDB_ESRGAN_x4.pth
+  strict_load: true
+  resume_state: #../experiments/NTIRE2021_pretrain_USRGAN/training_state/175000.state
+
+#### training settings: learning rate scheme, loss
+train:
+  lr_G: !!float 2e-4
+  weight_decay_G: 0
+  beta1: 0.9
+  beta2: 0.999
+  lr_scheme: MultiStepLR
+
+  niter: 400000
+  warmup_iter: -1  # no warm up
+  lr_steps: [50000, 100000, 150000] #[200000]
+  lr_gamma: 0.5
+
+  use_filters: False
+  pixel_criterion: l1
+  pixel_weight: 1
+
+  manual_seed: 10
+  val_freq: !!float 5e3
+
+#### logger
+logger:
+  print_freq: 100
+  save_checkpoint_freq: !!float 5e3

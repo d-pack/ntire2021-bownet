@@ -1,0 +1,37 @@
+#### general settings
+name: BOWGAN_pretrain
+use_tb_logger: true
+model: sr
+distortion: sr
+scale: 4
+gpu_ids: [0]
+
+#### datasets
+datasets:
+  val:
+    name: Track1_val
+    mode: LQGT
+    dataroot_GT: /mnt/ssd2/Datasets/NTIRE_2021/Track1_SR/val/val_sharp
+    dataroot_LQ: /mnt/ssd2/Datasets/NTIRE_2021/Track1_SR/val/val_blur_bicubic
+    skip: 1
+    batch_size: 1
+    
+#### network structures
+network_G:
+  which_model_G: BOWGAN
+  in_nc: 3
+  out_nc: 3
+  nf: 64
+  nb: 23
+
+#### path
+
+path:
+  pretrain_model_G: ../experiments/BOWGAN_pretrain/models/400000_G.pth
+  strict_load: true
+  resume_state: #
+
+#### logger
+logger:
+  print_freq: 100
+  save_checkpoint_freq: !!float 5e3
