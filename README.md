@@ -3,6 +3,8 @@
 This code is based on [ESGAN-FS](https://github.com/ManuelFritsche/real-world-sr).
 For more information visit their repository.
 
+## Network architecture
+![BOWNet architecture](images/bownet.png "BOWNet")
 
 ### Train
 To train model:
@@ -36,3 +38,4 @@ Our results:
 | 27.054675 | 0.852373 | 0.343938 | 0.214931 |
 
 Result data can be found [here](https://drive.google.com/file/d/1iMRj7iWsUjSosMJp9qjMFv1Ay5SkoFlA)
+
