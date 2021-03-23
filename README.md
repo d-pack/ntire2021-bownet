@@ -31,11 +31,11 @@ Result will be in folder *esrgan-fs/results/BOWGAN_pretrain*
 
 ### Results on NTIRE 2021  Track 1 Debluring
 
-Our results:  
+Our results on validation data:  
 
 | PSNR | SSIM | LPIPS | TIME |  
 |---|---|---|---|  
 | 27.054675 | 0.852373 | 0.343938 | 0.214931 |
-
-Result data can be found [here](https://drive.google.com/file/d/1iMRj7iWsUjSosMJp9qjMFv1Ay5SkoFlA)
+  
+Result on test data can be found [here](https://drive.google.com/file/d/1M4NI_NH_AJjQfCI9VUsAhqr2ovZsEilP)
 
